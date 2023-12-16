@@ -14,13 +14,13 @@ body {
 
 
 @font-face {
-  font-family: "Poppins";
+  font-family: "Inter";
   src: url('../fonts/font.ttf');
 }
 
 @font-face {
   font-family: "Inter";
-  src: url('../fonts/font.ttf');
+  src: url('../fonts/font2.ttf');
 }
 
 .gooey{
