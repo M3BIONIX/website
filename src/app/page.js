@@ -1,113 +1,129 @@
-import Image from 'next/image'
+"use client";
+import Image from "next/image"
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [joke, setJoke] = useState('');
+  const jokes = ["I'm Sanjay. Did you hear about the restaurant on the moon? Great food, but no atmosphere", "I'm Sanjay. I'm like a Schrödinger's cat: simultaneously alive, dead inside, and unsure if anyone actually cares", "I'm so good at multitasking, I can breathe and accidentally offend people at the same time"]
+
+  useEffect(() => {
+    setJoke(jokes[Math.floor(Math.random() * jokes.length)]);
+
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    
+    <div className="flex-1 bg-custom-black w-screen h-screen">
+    <div className="flex justify-between px-4 sm:px-16 xs:ml-5">
+      <h4 className="pt-16 font-product-sans text-custom-red tracking-wide text-3xl xs:text-xl md:text-4xl  xs:justify-start">M3BIONIX</h4>
+      <div className="flex pt-16 text-right">
+        <div className="group transition-all duration-300 ease-in-out px-5 md:flex hidden">
+          <button className="bg-left-bottom font-product-sans-m py-3 bg-gradient-to-r from-custom-red to-custom-red bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+            About Me
+          </button>
         </div>
+
+        <div className="group transition-all duration-300 ease-in-out px-5 md:flex hidden">
+          <button className="bg-left-bottom font-product-sans-m py-3 bg-gradient-to-r from-custom-red to-custom-red bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+            Contact
+          </button>
+        </div>
+
+        <div className="group transition-all duration-300 ease-in-out px-5 md:flex hidden">
+          <button className="bg-left-bottom font-product-sans-m py-3 bg-gradient-to-r from-custom-red to-custom-red bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+            Resume
+          </button>
+        </div>
+      </div>  
+
+      <div className="flex pt-16 md:hidden mr-5">
+        <button className="jmr-3" onClick={() => setIsOpen(!isOpen)}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>  
+        </button>
+
+        {isOpen && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center backdrop-blur z-10" onClick={() => setIsOpen(false)}>
+                <div className="transparent rounded-md shadow-lg p-6" onClick={(e) => e.stopPropagation()}>
+                    <div className="group transition-all duration-300 ease-in-out px-5 flex">
+                      <button  onClick={() => setIsOpen(false)} className="bg-left-bottom font-product-sans-m py-3 bg-gradient-to-r from-custom-red to-custom-red bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                      About Me
+                      </button>
+                    </div>
+                    <hr className="w-[60px] h-[2px] mx-auto bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
+                    <div className="group transition-all duration-300 ease-in-out px-5 flex">
+                      <button  onClick={() => setIsOpen(false)} className="bg-left-bottom font-product-sans-m py-3 bg-gradient-to-r from-custom-red to-custom-red bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                      Resume
+                      </button>
+                    </div>
+                    <hr className="w-[60px] h-[2px] mx-auto bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
+                    <div className="group transition-all duration-300 ease-in-out px-5 flex">
+                      <button  onClick={() => setIsOpen(false)} className="bg-left-bottom font-product-sans-m py-3 bg-gradient-to-r from-custom-red to-custom-red bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                      Contact
+                      </button>
+                    </div>
+                </div>
+            </div>
+          )}
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+    </div>
+    <div className="flex flex-col justify-center items-center mt-20 sm:mt-24 lg:mt-32">
+    <div className="md:text-center xs:right-10 flex xs:items-center justify-center md:h-auto ">
+      <p className="font-product-sans text-custom-red xs:text-5xl md:text-7xl xs:mt-[5rem] md:mt-10 transition-colors duration-300 hover:text-white">Hey, there</p>        
+    </div>
+      <div className="w-full mt-8 hidden md:flex mx-auto sm:w-1/3 md:w-1/2 md:mr-[10rem]">
+          <p className="font-product-sans-m md:leading-8 text-left xs:text-sm xs:text-justify md:text-base ">
+          I'm Sanjay, fluent in the languages of movies, anime, and questionable code.
+          I dabble in philosophy, mostly to fuel my existential dread during ramen nights.
+          Think Neo, but with less fighting robots and more existential dread-induced pizza orders. 
+          Hire me before I code my own AI girlfriend (no judgment on my waifu preferences).
+          </p>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="w-full mt-8 md:hidden px-4">
+        <p className="font-product-sans-m xs:text-sm xs:text-center xs:justify-around xs:w-auto md:text-base ">
+          {joke}
+        </p>
       </div>
-    </main>
-  )
+      <button type="button" className="hire hidden md:flex items-center">
+        Hire Me
+        <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </button>
+      
+      <div className="gooey absolute md:left-10 md:bottom-10 md:w-[350px] md:h-[400px] xs:flex xs:justify-center xs:left-[7rem] xs:bottom-0 xs:w-[150px] xs:h-[200px]" />
+      <div className="absolute md:left-0 md:bottom-0 md:ml-10 z-2 filter grayscale hover:grayscale-0 transition-all duration-500 xs:flex xs:justify-center xs:left-0 xs:bottom-0 ">
+          <Image src="/images/profile.png" width={350} height={350} className="w-full xs:w-1/2 xs: md:w-auto" alt="Hey, there was supposed to be a image here"/>
+      </div>
+      <div className="flex justify-center space-x-5 md:self-end md:px-[5rem] md:pt-[4rem] xs:mt-[4rem]">
+  <button 
+    type="button" 
+    className="btn flex items-center space-x-3 text-white hover:text-custom-red" 
+    onClick={() => window.open('https://github.com/yourusername', '_blank')}
+  >
+    <Image src="/images/github.png" width={30} height={30} alt="Hey, there was supposed to be a image here"/>
+  </button>
+  <button 
+    type="button" 
+    className="btn flex items-center space-x-3 text-white hover:text-custom-red" 
+    onClick={() => window.open('https://linkedin.com/in/yourusername', '_blank')}
+  >
+    <Image src="/images/linkedin.png" width={40} height={40} alt="Hey, there was supposed to be a image here"/>
+  </button>
+  <button 
+    type="button" 
+    className="btn flex items-center space-x-3 text-white hover:text-custom-red" 
+    onClick={() => window.open('https://open.spotify.com/user/yourusername', '_blank')}
+  >
+    <Image src="/images/spotify.png" width={30} height={30} alt="Hey, there was supposed to be a image here"/>
+  </button>
+</div>
+
+  </div> 
+</div>
+)
 }
