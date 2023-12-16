@@ -74,7 +74,7 @@ export default function Home() {
     </div>
     <div className="flex flex-col justify-center items-center mt-20 sm:mt-24 lg:mt-32">
     <div className="md:text-center xs:right-10 flex xs:items-center justify-center md:h-auto ">
-      <p className="font-product-sans text-custom-red xs:text-5xl md:text-7xl xs:mt-[2rem] md:mt-10 transition-colors duration-300 hover:text-white">Hey, there</p>        
+      <p className="font-product-sans text-custom-red xs:text-5xl md:text-7xl xs:mt-[1rem] md:mt-10 transition-colors duration-300 hover:text-white">Hey, there</p>        
     </div>
       <div className="w-full mt-8 hidden md:flex mx-auto sm:w-1/3 md:w-1/2 md:mr-[10rem]">
           <p className="font-product-sans-m md:leading-8 text-left xs:text-sm xs:text-justify md:text-base ">
