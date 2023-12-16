@@ -17,7 +17,7 @@ export default function Home() {
   return (
     
     <div className="flex-1 bg-custom-black w-screen h-screen">
-    <div className="flex justify-between px-4 sm:px-16 xs:ml-5">
+    <div className="flex justify-between px-4  xs:ml-8">
       <h4 className="pt-16 font-product-sans text-custom-red tracking-wide text-3xl xs:text-xl md:text-4xl  xs:justify-start">M3BIONIX</h4>
       <div className="flex pt-16 text-right">
         <div className="group transition-all duration-300 ease-in-out px-5 md:flex hidden">
