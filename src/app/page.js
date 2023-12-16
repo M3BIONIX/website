@@ -100,7 +100,7 @@ export default function Home() {
       <div className="absolute md:left-0 md:bottom-0 md:ml-10 z-2 filter grayscale hover:grayscale-0 transition-all duration-500 xs:flex xs:justify-center xs:left-0 xs:bottom-0 ">
           <Image src="/images/profile.png" width={350} height={350} className="w-full xs:w-1/2 xs: md:w-auto" alt="Hey, there was supposed to be a image here"/>
       </div>
-      <div className="flex justify-center space-x-5 md:self-end md:px-[5rem] md:pt-[4rem] xs:mt-[1rem]">
+      <div className="flex justify-center space-x-5 md:self-end md:px-[5rem] md:pt-[4rem] xs:mt-[15px]">
   <button 
     type="button" 
     className="btn flex items-center space-x-3 text-white hover:text-custom-red" 
