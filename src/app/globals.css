@@ -127,19 +127,3 @@ body {
   transition: 0.8s;
 }
 
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-  .hire {
-    font-size: 16px;
-    padding: 8px 16px;
-    margin-right: 1rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .hire {
-    font-size: 14px;
-    padding: 6px 12px;
-    margin-right: 0.5rem;
-  }
-}
