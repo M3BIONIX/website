@@ -74,7 +74,7 @@ export default function Home() {
     </div>
     <div className="flex flex-col justify-center items-center mt-20 sm:mt-24 lg:mt-32">
     <div className="md:text-center xs:right-10 flex xs:items-center justify-center md:h-auto ">
-      <p className="font-product-sans text-custom-red xs:text-5xl md:text-7xl xs:mt-[3rem] md:mt-10 transition-colors duration-300 hover:text-white">Hey, there</p>        
+      <p className="font-product-sans text-custom-red xs:text-5xl md:text-7xl xs:mt-[2rem] md:mt-10 transition-colors duration-300 hover:text-white">Hey, there</p>        
     </div>
       <div className="w-full mt-8 hidden md:flex mx-auto sm:w-1/3 md:w-1/2 md:mr-[10rem]">
           <p className="font-product-sans-m md:leading-8 text-left xs:text-sm xs:text-justify md:text-base ">
@@ -100,7 +100,7 @@ export default function Home() {
       <div className="absolute md:left-0 md:bottom-0 md:ml-10 z-2 filter grayscale hover:grayscale-0 transition-all duration-500 xs:flex xs:justify-center xs:left-0 xs:bottom-0 ">
           <Image src="/images/profile.png" width={350} height={350} className="w-full xs:w-1/2 xs: md:w-auto" alt="Hey, there was supposed to be a image here"/>
       </div>
-      <div className="flex justify-center space-x-5 md:self-end md:px-[5rem] md:pt-[4rem] xs:mt-[4rem]">
+      <div className="flex justify-center space-x-5 md:self-end md:px-[5rem] md:pt-[4rem] xs:mt-[1rem]">
   <button 
     type="button" 
     className="btn flex items-center space-x-3 text-white hover:text-custom-red" 
