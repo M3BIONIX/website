@@ -103,21 +103,21 @@ export default function Home() {
   <button 
     type="button" 
     className="btn flex items-center space-x-3 text-white hover:text-custom-red" 
-    onClick={() => window.open('https://github.com/yourusername', '_blank')}
+    onClick={() => window.open('https://github.com/M3BIONIX', '_blank')}
   >
     <Image src="/images/github.png" width={30} height={30} alt="Hey, there was supposed to be a image here"/>
   </button>
   <button 
     type="button" 
     className="btn flex items-center space-x-3 text-white hover:text-custom-red" 
-    onClick={() => window.open('https://linkedin.com/in/yourusername', '_blank')}
+    onClick={() => window.open('www.linkedin.com/in/sanjay-mathew34', '_blank')}
   >
     <Image src="/images/linkedin.png" width={40} height={40} alt="Hey, there was supposed to be a image here"/>
   </button>
   <button 
     type="button" 
     className="btn flex items-center space-x-3 text-white hover:text-custom-red" 
-    onClick={() => window.open('https://open.spotify.com/user/yourusername', '_blank')}
+    onClick={() => window.open('https://open.spotify.com/user/cmlmip62j0ll3blad4ub0g937?si=0ad35db74f024930', '_blank')}
   >
     <Image src="/images/spotify.png" width={30} height={30} alt="Hey, there was supposed to be a image here"/>
   </button>
