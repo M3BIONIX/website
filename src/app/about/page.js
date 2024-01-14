@@ -3,7 +3,7 @@ export default function About() {
       <div className="bg-custom-black min-h-screen flex flex-col items-center">
          <p className="font-product-sans text-custom-red transition-colors duration-300 hover:text-white xs:self-center xs:text-4xl xs:mt-[50px] md:self-start md:ml-[50px] md:mt-[50px] md:text-7xl ">About Me</p>
          <div className="w-full flex justify-center">
-            <img src="/images/image.svg" className="md:h-[400px] md:mt-[20px] xs:h-[300px]" />
+            <img src="/images/Image.svg" className="md:h-[400px] md:mt-[20px] xs:h-[300px]" />
          </div>
          <div className="font-product-sans-m md:leading-8 justify-center md:text-base md:w-1/2 xs:w-3/4 text-center">
                You've clicked the "About Me" button? Bold move, bro. 
