@@ -1,7 +1,7 @@
 export default function About() {
    return(
-      <div className="bg-custom-black min-h-screen flex flex-col items-center">
-         <p className="font-product-sans text-custom-red transition-colors duration-300 hover:text-white xs:self-center xs:text-4xl xs:mt-[50px] md:self-start md:ml-[50px] md:mt-[50px] md:text-7xl ">About Me</p>
+      <div className="bg-custom-black min-w-full min-h-full flex flex-col items-center">
+         <p className="font-product-sans text-custom-red transition-colors duration-300 hover:text-white xs:self-center xs:text-5xl xs:mt-[50px] md:self-start md:ml-[50px] md:mt-[50px] md:text-7xl ">About Me</p>
          <div className="w-full flex justify-center">
             <img src="/images/Image.svg" className="md:h-[400px] md:mt-[20px] xs:h-[300px]" />
          </div>
@@ -17,7 +17,7 @@ export default function About() {
          <img src="https://spotify-black-five.vercel.app/api/spotify" alt="Spotify Playing" width="350" className="mt-[20px] xs:w-[200px] md:w-[350px]"/>
          </div>
 
-         <div className="md:grid md:grid-cols-2 md:gap-4 w-screen justify-center md:mt-[60px] ">
+         <div className="md:grid md:grid-cols-2 md:gap-4 w-full justify-center md:mt-[60px] ">
             <div className="flex flex-col md:items-start xs:items-center md:ml-[13rem]  xs:space-y-5">
                <p className="font-product-sans text-custom-red transition-colors duration-300 hover:text-white xs:self-center xs:text-4xl xs:mt-[50px] md:self-start md:ml-[80px] md:mt-[50px] md:text-3xl ">Education</p>
                
@@ -32,7 +32,7 @@ export default function About() {
                <div className="flex flex-row items-center xs:space-x-5 xs:ml-[15px] md:ml-[0px]">
                   <img src="/images/school.svg" className="md:h-[40px] md:mt-[40px] md:ml-[80px] border-[2px] rounded-full p-[6px] xs:h-[40px]" />
                   <div className="flex flex-col md:ml-[20px] md:mt-[40px]">
-                     <p className="font-product-sans-m ">Saraswathi Vidyaniketan Public School</p>
+                     <p className="font-product-sans-m md:text-left w-[300px]">Saraswathi Vidyaniketan Public School</p>
                      <p className="font-product-sans-m text-[11px]">2018 - 2020</p>
                   </div>
                </div>

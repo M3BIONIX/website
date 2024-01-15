@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     
-    <div className="flex-1 bg-custom-black w-screen h-screen">
+    <div className="flex-1 bg-custom-black h-screen w-full">
     <div className="flex justify-between px-4 xs:ml-[30px]">
       <h4 className="md:pt-16 xs:pt-10 font-product-sans text-custom-red tracking-wide text-3xl xs:text-xl md:text-4xl  xs:justify-start">M3BIONIX</h4>
       <div className="flex pt-16 text-right">
@@ -95,10 +95,9 @@ export default function Home() {
         </button>
       </div>
     </div>
-      <div className="gooey absolute md:bottom-[40px] md:left-10 md:w-[350px] md:h-[350px] xs:flex xs:justify-center xs:left-[7rem] xs:bottom-0 xs:w-[150px] xs:h-[200px]" />
-      <div className="absolute md:left-0 md:ml-10 z-2 filter grayscale hover:grayscale-0 transition-all duration-500 xs:flex xs:justify-center xs:left-0 xs:bottom-0 ">
-          <Image src="/images/profile.png" width={280} height={280} className=" md:mt-[50px] xs:w-1/2 md:w-auto" alt="Hey, there was supposed to be a image here"/>
-      </div>
+    <div className="absolute bottom-0 xs:left-1/2 md:left-[200px] transform -translate-x-1/2 md:ml-[30px] filter grayscale hover:grayscale-0 transition-all duration-500 flex-1 md:bottom-20">
+    <Image src="/images/profile.png" unoptimized width={400} height={600} className="gooey xs:min-w-5/6 xs:min-h-5/6 md:w-[400px] md:h-[470px]" alt="Hey, there was supposed to be a image here"/>
+</div>
         <div className="flex flex-row space-x-5 md:justify-end md:mr-[5rem] md:mt-[8rem] xs:justify-center xs:mt-5">
         <button  type="button"  className="btn flex items-center space-x-3 text-white hover:text-custom-red"   onClick={() => window.open('https://github.com/M3BIONIX', '_blank')}>
                  <Image src="/images/github.png" width={30} height={30} alt="Hey, there was supposed to be a image here"/>
