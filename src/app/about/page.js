@@ -70,8 +70,8 @@ export default function About() {
 
          <p className="font-product-sans text-custom-red transition-colors duration-300 hover:text-white xs:self-center xs:text-4xl xs:mt-[50px] md:self-start md:ml-[15rem] md:mt-[150px] md:text-5xl ">Projects</p>
 
-         <div className="flex items-center md:justify-start flex-col md:flex-row md:ml-[30rem] w-full md:space-x-[50px] pb-[10rem]">
-            <div className="flip">
+         <div className="flex items-center md:justify-start flex-row xs:overflow-y-auto xs:space-x-10  md:ml-[30rem] w-full md:space-x-[50px] pb-[10rem]">
+            <div className="flip xs:ml-[40px] md:ml-0">
                <div className="front">
                   <div className="flex border-2 p-5 rounded-lg mt-[50px] justify-center space-y-5 w-[300px] bg-[#222323]">
                      <img src="/images/kshree.svg" className="w-[80px] h-[360px]"/>

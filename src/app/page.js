@@ -24,7 +24,7 @@ export default function Home() {
       <div className="flex pt-16 text-right">
         
         <div className="group transition-all duration-300 ease-in-out px-5 md:flex hidden">
-          <button className="bg-left-bottom font-product-sans-m py-3 bg-gradient-to-r from-custom-red to-custom-red bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+          <button onClick={()=>{router.push('/contact')}} className="bg-left-bottom font-product-sans-m py-3 bg-gradient-to-r from-custom-red to-custom-red bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
             Contact
           </button>
         </div>
