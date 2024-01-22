@@ -59,7 +59,7 @@ export default function Home() {
                     </div>
                     <hr className="w-[60px] h-[2px] mx-auto bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
                     <div className="group transition-all duration-300 ease-in-out px-5 flex">
-                      <button  onClick={() => setIsOpen(false)} className="bg-left-bottom font-product-sans-m py-3 bg-gradient-to-r from-custom-red to-custom-red bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                      <button  onClick={() => {router.push('/contact')}} className="bg-left-bottom font-product-sans-m py-3 bg-gradient-to-r from-custom-red to-custom-red bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
                       Contact
                       </button>
                     </div>
