@@ -2,51 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Herr+Von+Muellerhoff&display=swap');
 
+@font-face {
+  font-family: 'Halimun';
+  src: url('../fonts/Halimun-W7jn.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --font-inter: 'Inter', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+  --font-caveat: 'Caveat', cursive;
+  --font-herr-von-muellerhoff: 'Herr Von Muellerhoff', cursive;
+  --font-halimun: 'Halimun', cursive;
 }
 
 body {
-  color: white;
+  color: rgb(var(--foreground-rgb));
+  background: #f8f9fa;
+  font-family: var(--font-inter);
 }
 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 
-@font-face {
-  font-family: "Poppins";
-  src: url('../fonts/font.ttf');
-  font-weight: 700;
+  /* Custom Cursor Override */
+  * {
+    cursor: none !important;
+  }
 
-  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  /* Selection Highlight */
+  ::selection {
+    background-color: #ffffff;
+    color: black;
+  }
+
+  /* Firefox specific */
+  ::-moz-selection {
+    background-color: #ffffff;
+    color: black;
+  }
 }
 
-@font-face {
-  font-family: "Inter";
-  src: url('../fonts/font2.ttf');
-}
-
-.gooey{
+.gooey {
+  filter: url('#gooey');
   background-image: linear-gradient(120deg, #E40037 0%, #FF2B51 100%);
   border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-  animation: morph 3s linear infinite; 
+  animation: morph 3s linear infinite;
   transform-style: preserve-3d;
   outline: 1px solid transparent;
   will-change: border-radius;
-  
-  
+
+
 }
 
 .gooey:before,
-.gooey:after{
+.gooey:after {
   content: '';
   width: 100%;
   height: 100%;
   display: block;
   position: absolute;
-  left: 0; top: 0;
+  left: 0;
+  top: 0;
   border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
   box-shadow: 5px 5px 89px rgba(0, 102, 255, 0.21);
   will-change: border-radius, transform, opacity;
@@ -54,47 +90,52 @@ body {
   background-image: linear-gradient(120deg, #FF2B51 0%, rgba(208, 125, 102, 0.89) 100%);
 }
 
-.gooey:before{
+.gooey:before {
   animation: morph 3s linear infinite;
   opacity: .21;
   animation-duration: 1.5s;
 }
 
-.gooey:after{
+.gooey:after {
   animation: morph 3s linear infinite;
   animation-delay: 400ms;
   opacity: .89;
 }
 
 
-@keyframes morph{
-  0%,100%{
-  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-    transform: translate3d(0,0,0) rotateZ(0.01deg);
+@keyframes morph {
+
+  0%,
+  100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
   }
-  34%{
-      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
-    transform:  translate3d(0,5px,0) rotateZ(0.01deg);
+
+  34% {
+    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
   }
-  50%{
+
+  50% {
     opacity: .89;
-    transform: translate3d(0,0,0) rotateZ(0.01deg);
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
   }
-  67%{
-    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
-    transform: translate3d(0,-3px,0) rotateZ(0.01deg);
+
+  67% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
   }
 }
 
-@keyframes fadeIn{
-  100%{
+@keyframes fadeIn {
+  100% {
     transform: scale(1.03);
     opacity: 0;
   }
 }
 
-.hire{
-  border: 1px solid #FF2B51;  
+.hire {
+  border: 1px solid #FF2B51;
   background: none;
   padding: 10px 20px;
   font-size: 20px;
@@ -105,13 +146,13 @@ body {
   margin-top: 30px;
 }
 
-.hire:hover{
+.hire:hover {
   background: #FF2B51;
   color: white;
   transition: 0.5s;
 }
 
-.hire:before{
+.hire:before {
   content: "";
   position: absolute;
   left: 0;
@@ -124,47 +165,53 @@ body {
 
 .flip {
   position: relative;
+
   >.front,
   >.back {
-      display: block;
-      transition-timing-function: cubic-bezier(.175, .885, .32, 1.275);
-      transition-duration: .5s;
-      transition-property: transform, opacity;
+    display: block;
+    transition-timing-function: cubic-bezier(.175, .885, .32, 1.275);
+    transition-duration: .5s;
+    transition-property: transform, opacity;
   }
+
   >.front {
-      transform: rotateY(0deg);
+    transform: rotateY(0deg);
   }
+
   >.back {
-      position: absolute;
-      opacity: 0;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      height: 100%;
-      transform: rotateY(-180deg);
+    position: absolute;
+    opacity: 0;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(-180deg);
   }
+
   &:hover {
-      >.front {
-          transform: rotateY(180deg);
-      }
-      >.back {
-          opacity: 1;
-          transform: rotateY(0deg);
-      }
+    >.front {
+      transform: rotateY(180deg);
+    }
+
+    >.back {
+      opacity: 1;
+      transform: rotateY(0deg);
+    }
   }
+
   &.flip-vertical {
+    >.back {
+      transform: rotateX(-180deg);
+    }
+
+    &:hover {
+      >.front {
+        transform: rotateX(180deg);
+      }
+
       >.back {
-          transform: rotateX(-180deg);
+        transform: rotateX(0deg);
       }
-      &:hover {
-          >.front {
-              transform: rotateX(180deg);
-          }
-          >.back {
-              transform: rotateX(0deg);
-          }
-      }
+    }
   }
 }
-
-
