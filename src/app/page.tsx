@@ -1,23 +1,27 @@
-'use client';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Work from '@/components/Work';
-import Captures from '@/components/Captures';
+import OffTheClock from '@/components/OffTheClock';
+import Skills from '@/components/Skills';
+import Experience from '@/components/Experience';
 import Footer from '@/components/Footer';
+import { getCalEvent } from '@/lib/cal';
 
-import CustomCursor from '@/components/CustomCursor';
+export default async function Home() {
+  // Fetched server-side, cached for 1 hour. Falls back to a sane default if the API fails.
+  const calEvent = await getCalEvent('30min');
 
-export default function Home() {
   return (
-    <main className="min-h-screen bg-off-white dark:bg-black overflow-x-hidden">
-      <CustomCursor />
+    <main className="min-h-screen bg-white text-black">
       <Navbar />
       <Hero />
       <About />
       <Work />
-      <Captures />
-      <Footer />
+      <OffTheClock />
+      <Skills />
+      <Experience />
+      <Footer calEvent={calEvent} />
     </main>
   );
 }

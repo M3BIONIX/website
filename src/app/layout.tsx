@@ -1,17 +1,26 @@
-import { Inter } from 'next/font/google'
-import './globals.css'
+import { DM_Sans } from 'next/font/google';
+import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] })
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
 
 export const metadata = {
-  title: 'M3BIONIX',
-  description: 'Hey, Welcome to my website !',
-}
+  title: 'Sanjay Mathew — m3bionix',
+  description:
+    'Sanjay Mathew. engineer based in Kochi. I write software, take photographs, and assemble small FPV drones from parts.',
+  icons: {
+    icon: '/icon.svg',
+  },
+};
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={dmSans.variable}>
+      <body className="bg-white text-black font-sans antialiased">{children}</body>
     </html>
-  )
+  );
 }

@@ -7,32 +7,39 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'xs': '300px',
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1440px',
     },
     extend: {
       fontFamily: {
-        'sans': ['var(--font-inter)', 'sans-serif'],
-        'serif': ['var(--font-playfair)', 'serif'],
-        'cursive': ['var(--font-caveat)', 'cursive'],
-        'handwriting': ['var(--font-halimun)', 'cursive'], // Halimun local font for sticky note
+        sans: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
       },
       colors: {
-        'custom-red': '#FF2B51',
-        'custom-black': '#0a0a0a',
-        'off-white': '#f8f9fa',
-        'accent-green': '#00ff00',
+        neutral: {
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
+          950: '#0a0a0a',
+        },
       },
-      backgroundImage: {
-        'grid-pattern': "linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)",
+      maxWidth: {
+        content: '1440px',
       },
       boxShadow: {
-        'glow': '0 0px 20px rgba(255, 43, 81, 0.5)',
+        'card-lift': '0 2px 8px rgba(0,0,0,0.04), 0 12px 32px -12px rgba(0,0,0,0.08)',
+        'card-elevate': '0 24px 48px -12px rgba(0,0,0,0.4)',
       },
     },
   },
   plugins: [],
-}
+};

@@ -1,114 +1,48 @@
 'use client';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+
+import { PiAsteriskBold, PiArrowUpRightBold } from 'react-icons/pi';
+
+const NAV_LINKS = [
+  { id: 'work', label: 'work' },
+  { id: 'about', label: 'about' },
+  { id: 'off-the-clock', label: 'off the clock' },
+  { id: 'stack', label: 'stack' },
+];
 
 const Navbar = () => {
-    const [time, setTime] = useState('');
-    const [activeSection, setActiveSection] = useState('');
-    const [isScrolled, setIsScrolled] = useState(false);
+  return (
+    <header className="w-full border-b border-neutral-200 bg-white">
+      <div className="mx-auto flex max-w-content flex-row items-center justify-between px-5 py-4 md:px-12 md:py-6">
+        <a href="#top" className="flex flex-row items-center gap-2 md:gap-2.5">
+          <PiAsteriskBold className="h-[16px] w-[16px] text-black md:h-[18px] md:w-[18px]" />
+          <span className="text-[14px] font-medium tracking-tight text-black md:text-[15px]">m3bionix</span>
+          <span className="text-[14px] text-neutral-300 md:text-[15px]">/</span>
+          <span className="hidden text-[15px] font-normal text-neutral-500 sm:inline">sanjay mathew</span>
+          <span className="text-[13px] text-neutral-500 sm:hidden">sanjay</span>
+        </a>
 
-    const { scrollY } = useScroll();
-
-    useMotionValueEvent(scrollY, "change", (latest) => {
-        setIsScrolled(latest > 50);
-    });
-
-    // Time Update
-    useEffect(() => {
-        const updateTime = () => {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', {
-                hour12: false,
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
-            setTime(timeString);
-        };
-        updateTime();
-        const interval = setInterval(updateTime, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
-    // Active Section Spy
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = ['story', 'work', 'captures'];
-            const scrollPosition = window.scrollY + 200; // Offset for better detection
-
-            for (const section of sections) {
-                const element = document.getElementById(section);
-                if (element) {
-                    const { offsetTop, offsetHeight } = element;
-                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                        setActiveSection(section);
-                        return; // Found the active section
-                    }
-                }
-            }
-            // If at top or no section matches
-            if (window.scrollY < 200) setActiveSection('');
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const navLinks = [
-        { id: 'story', label: 'Story' },
-        { id: 'work', label: 'Work' },
-        { id: 'captures', label: 'Captures' },
-    ];
-
-    return (
-        <motion.div
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className="fixed top-6 left-0 right-0 z-50 flex justify-center w-full pointer-events-none"
-        >
-            <motion.div
-                animate={{
-                    scaleX: isScrolled ? 0.95 : 1, // Only shrink horizontally
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="bg-white border border-gray-100 shadow-sm rounded-full flex items-center pointer-events-auto transition-colors dark:bg-black dark:border-white/10"
-                style={{ padding: "0.75rem" }} // Keep vertical padding constant
+        <nav className="hidden flex-row items-center gap-9 lg:flex">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className="text-[13.5px] font-normal text-neutral-500 transition-colors duration-200 hover:text-black"
             >
-                {/* Brand & Time */}
-                <div className="flex items-center gap-4 pl-4 pr-6 border-r border-gray-100 dark:border-zinc-800">
-                    <span className="font-bold text-xl font-sans text-black dark:text-white">M3</span>
-                    <div className="bg-gray-100 dark:bg-zinc-900 rounded-full px-3 py-1 flex items-baseline gap-1">
-                        <span className="text-sm font-medium text-black dark:text-white tabular-nums">{time}</span>
-                        <span className="text-[10px] text-gray-400 font-medium uppercase">IST</span>
-                    </div>
-                </div>
+              {link.label}
+            </a>
+          ))}
+        </nav>
 
-                {/* Navigation */}
-                <nav className="hidden md:flex items-center px-2">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.id}
-                            href={`#${link.id}`}
-                            className={`relative px-4 py-2 text-sm font-medium transition-colors ${activeSection === link.id
-                                ? 'text-black dark:text-white'
-                                : 'text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200'
-                                }`}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-                </nav>
-
-                {/* CTA Button */}
-                <div className="pl-2 pr-1">
-                    <button className="bg-black text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-gray-800 transition-colors dark:bg-white dark:text-black dark:hover:bg-gray-200">
-                        Get in Touch
-                    </button>
-                </div>
-            </motion.div>
-        </motion.div>
-    );
+        <a
+          href="#get-in-touch"
+          className="flex flex-row items-center gap-1.5 rounded-[8px] bg-black px-3.5 py-2 transition-transform active:scale-[0.96] md:px-4"
+        >
+          <span className="text-[13px] font-medium text-white">get in touch</span>
+          <PiArrowUpRightBold className="h-[13px] w-[13px] text-white" />
+        </a>
+      </div>
+    </header>
+  );
 };
 
 export default Navbar;

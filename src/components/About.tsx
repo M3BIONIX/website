@@ -1,112 +1,135 @@
 'use client';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
+import Image from 'next/image';
+import { Reveal, RevealImage, Stagger } from './Reveal';
+
+const META_ROWS = [
+  { key: 'name', value: 'Sanjay Mathew' },
+  { key: 'age', value: '23' },
+  { key: 'role', value: 'product + eng @ YE Stack' },
+  { key: 'base', value: 'Kochi, IN' },
+];
+
+const STATS = [
+  { value: '02', label: 'years professional' },
+  { value: '12', label: 'projects shipped' },
+  { value: '03', label: 'product teams' },
+];
 
 const About = () => {
-    const [activeTab, setActiveTab] = useState('Story');
-
-    const tabs = ['Story', 'TL;DR', 'Timeline'];
-
-    const content = {
-        Story: (
-            <div className="space-y-6 text-lg md:text-xl text-gray-800 dark:text-gray-300 leading-relaxed max-w-4xl font-sans">
-                <p>
-                    I am from <span className="font-bold text-black dark:text-white">Angamaly, Kerala</span>. My journey into tech wasn't straightforward—we didn't even have a computer until 2018. We didn't really know what to look for, so we ended up buying a PC with really low specs. But that limitation became a blessing; I had to learn how to <span className="italic">hack games</span> just to make them run. That necessity sparked my passion for software—I wasn't just playing anymore, I was figuring out how things worked under the hood.
-                </p>
-                <p>
-                    It was a cycle of breaking the computer, fixing it, and breaking it again. My first big win was figuring out how to boot Windows from a pen drive. Then came the code. My brother had a text with a Java clock program. I copied it line-by-line, and seeing it work was magic. By 10th grade (2020), I found HTML & CSS, and I was hooked.
-                </p>
-                <p>
-                    In 2021, I got my first personal laptop. I thought I'd use it for gaming, but I pivoted hard to software. Everyone in college was chasing Flutter, but I said, <span className="font-serif italic font-bold">"Screw it, let's study React."</span>
-                </p>
-                <p>
-                    <span className="bg-yellow-200 dark:bg-yellow-900/50 px-1 rounded-sm">Fun fact:</span> In college, we had no reliable internet. But Vodafone offered free data from <span className="font-bold">12 AM to 6 AM</span>. So, I became a night owl, staying up just to download packages and build apps. That grind taught me everything.
-                </p>
-                <p>
-                    Now in 2025, I am 23 years old and working as a <span className="font-bold text-black dark:text-white">Software Developer at White Rabbit Group</span>. I build Notion-based applications, Shopify/WordPress projects, and I go absolutely crazy for <span className="bg-cyan-400/20 px-1 rounded-sm text-cyan-700 dark:text-cyan-300 font-bold">AI models</span>.
-                </p>
+  return (
+    <section id="about" className="border-t border-neutral-200 bg-white">
+      <div className="mx-auto flex max-w-content flex-col gap-7 px-5 py-14 md:flex-row md:gap-20 md:px-12 md:py-28">
+        {/* Sidebar */}
+        <div className="flex w-full shrink-0 flex-col gap-5 md:w-[300px] md:gap-6">
+          {/* Mobile card */}
+          <Reveal className="md:hidden">
+            <div className="flex flex-row gap-4 rounded-[16px] border border-neutral-200 bg-white p-4">
+              <RevealImage className="relative h-[88px] w-[88px] shrink-0 overflow-hidden rounded-[10px] ring-1 ring-black/10">
+                <Image
+                  src="/images/Profile.png"
+                  alt="Sanjay Mathew"
+                  fill
+                  className="object-cover grayscale"
+                  sizes="88px"
+                  priority
+                />
+              </RevealImage>
+              <div className="flex min-w-0 flex-1 flex-col gap-1">
+                {META_ROWS.map((row, i) => (
+                  <div
+                    key={row.key}
+                    className={`flex flex-row items-center justify-between ${i === 0 ? '' : 'border-t border-neutral-200 pt-1.5'}`}
+                  >
+                    <span className="text-[11.5px] text-neutral-500">{row.key}</span>
+                    <span className="text-right text-[12px] font-medium text-black">{row.value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-        ),
-        'TL;DR': (
-            <div className="text-xl md:text-3xl text-gray-400 dark:text-zinc-600 leading-snug max-w-5xl font-sans font-medium">
-                <span className="text-black dark:text-white">I am M3</span>, a <span className="text-black dark:text-white">Full Stack Developer</span> from Kerala.
-                My journey began with <span className="text-black dark:text-white">hacking low-spec PCs</span> in 2018, which led me to <span className="text-black dark:text-white">learn coding</span> using <span className="text-black dark:text-white">free midnight data</span>.
-                I <span className="text-black dark:text-white">pivoted to building apps</span> and now, <span className="text-black dark:text-white">at White Rabbit Group</span>, I
-                <span className="text-black dark:text-white"> build Notion apps</span> and experiment with <span className="text-black dark:text-white">AI models</span>.
+          </Reveal>
+
+          {/* Desktop card */}
+          <Reveal className="hidden md:block">
+            <div className="flex flex-col gap-5 rounded-[16px] border border-neutral-200 bg-white p-6">
+              <RevealImage className="relative aspect-square w-full overflow-hidden rounded-[10px] ring-1 ring-black/10">
+                <Image
+                  src="/images/Profile.png"
+                  alt="Sanjay Mathew"
+                  fill
+                  className="object-cover grayscale"
+                  sizes="(min-width: 768px) 300px, 100vw"
+                  priority
+                />
+              </RevealImage>
+              <div className="flex flex-col gap-2">
+                {META_ROWS.map((row, i) => (
+                  <div
+                    key={row.key}
+                    className={`flex flex-row items-center justify-between ${i === 0 ? '' : 'border-t border-neutral-200 pt-2'}`}
+                  >
+                    <span className="text-[12px] text-neutral-500">{row.key}</span>
+                    <span className="text-[12.5px] font-medium text-black">{row.value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-        ),
-        'Timeline': (
-            <div className="space-y-8 text-lg md:text-xl text-gray-800 dark:text-gray-300 border-l-2 border-gray-200 dark:border-zinc-800 pl-8 ml-4">
-                <div className="relative">
-                    <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-black dark:bg-white border-4 border-white dark:border-black"></div>
-                    <div className="font-bold text-2xl mb-1">2025</div>
-                    <div className="text-gray-500 dark:text-gray-400 text-sm mb-2">White Rabbit Group</div>
-                    <div>Full Stack Developer working on Notion apps, AI, and Web platforms.</div>
-                </div>
-                <div className="relative">
-                    <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-gray-300 dark:bg-zinc-700 border-4 border-white dark:border-black"></div>
-                    <div className="font-bold text-2xl mb-1">2021</div>
-                    <div className="text-gray-500 dark:text-gray-400 text-sm mb-2">The Pivot</div>
-                    <div>Got my first laptop. Shifted focus from gaming to React & Mobile Dev.</div>
-                </div>
-                <div className="relative">
-                    <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-gray-300 dark:bg-zinc-700 border-4 border-white dark:border-black"></div>
-                    <div className="font-bold text-2xl mb-1">2020</div>
-                    <div className="text-gray-500 dark:text-gray-400 text-sm mb-2">10th Standard</div>
-                    <div>Introduction to HTML & CSS. The spark begins.</div>
-                </div>
-                <div className="relative">
-                    <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-gray-300 dark:bg-zinc-700 border-4 border-white dark:border-black"></div>
-                    <div className="font-bold text-2xl mb-1">2018</div>
-                    <div className="text-gray-500 dark:text-gray-400 text-sm mb-2">8th Standard</div>
-                    <div>First PC. Hacking games on low RAM. Installing Windows from scratch.</div>
-                </div>
-            </div>
-        )
-    };
+          </Reveal>
+        </div>
 
-    return (
-        <section id="story" className="py-20 bg-white dark:bg-black">
-            <div className="container mx-auto px-6 max-w-6xl">
-                <div className="flex flex-col md:flex-row justify-between items-start mb-12">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4 md:mb-0"
-                    >
-                        About
-                    </motion.h2>
+        {/* Body */}
+        <div className="flex max-w-[760px] flex-1 flex-col gap-7 md:gap-10">
+          <Reveal>
+            <h2 className="text-[32px] font-medium leading-[1.15] tracking-[-0.03em] text-black text-balance md:text-[44px]">
+              engineer based in Kochi. two years into product engineering, focused on how AI agents hold context across sessions.
+            </h2>
+          </Reveal>
 
-                    <div className="bg-gray-100 dark:bg-zinc-900 p-1 rounded-full flex gap-1">
-                        {tabs.map((tab) => (
-                            <button
-                                key={tab}
-                                onClick={() => setActiveTab(tab)}
-                                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeTab === tab ? 'bg-white dark:bg-zinc-800 shadow-sm text-black dark:text-white' : 'text-gray-500 hover:text-gray-800 dark:hover:text-gray-300'}`}
-                            >
-                                {tab}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-
-                <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 20
-                    }}
-                    className="mb-8"
+          <Stagger className="flex flex-col gap-4 md:gap-5">
+            <Stagger.Item>
+              <p className="max-w-[65ch] text-[14.5px] leading-[1.7] text-neutral-900 md:text-[15.5px]">
+                Started on Java and HTML/CSS in school, then settled into the React + TypeScript stack through college projects. The substance was always in the late-night side builds, not the syllabus.
+              </p>
+            </Stagger.Item>
+            <Stagger.Item>
+              <p className="max-w-[65ch] text-[14.5px] leading-[1.7] text-neutral-900 md:text-[15.5px]">
+                Interned at Tata Elxsi on autonomous-driving simulation &mdash; collision detection on CARLA + OpenMaps, OTA progress tracking for infotainment firmware. Then 1 year 4 months as a Software Development Engineer at White Rabbit Labs in Kochi: Angular 20 + NgRx applications with 100+ concurrent components, FastAPI microservices, OAuth2 QuickBooks integration with HMAC-secured webhooks, and a Notion-style real-time state layer that cut API calls by 80%.
+              </p>
+            </Stagger.Item>
+            <Stagger.Item>
+              <p className="max-w-[65ch] text-[14.5px] leading-[1.7] text-neutral-900 md:text-[15.5px]">
+                Now at{' '}
+                <a
+                  href="https://www.yestack.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-black underline decoration-neutral-200 underline-offset-4 transition-colors hover:decoration-black"
                 >
-                    {content[activeTab]}
-                </motion.div>
-            </div>
-        </section>
-    );
+                  YE Stack
+                </a>{' '}
+                in a hybrid product + engineering role, building{' '}
+                <span className="font-medium text-black">Helixis</span> &mdash; a persistent memory layer for AI agents &mdash; and broader systems that map how human cognition actually works.
+              </p>
+            </Stagger.Item>
+          </Stagger>
+
+          <Stagger className="mt-2 grid grid-cols-3 border-t border-neutral-200 md:mt-4">
+            {STATS.map((s, i) => (
+              <Stagger.Item
+                key={s.label}
+                className={`flex flex-col gap-1.5 py-4 md:gap-2 md:py-6 ${i < 2 ? 'border-r border-neutral-200' : ''} ${i === 0 ? 'pr-3 md:pr-6' : ''} ${i === 1 ? 'px-3 md:px-6' : ''} ${i === 2 ? 'pl-3 md:pl-6' : ''}`}
+              >
+                <span className="text-[26px] font-medium leading-none tabular-nums tracking-tight text-black md:text-[40px]">
+                  {s.value}
+                </span>
+                <span className="text-[10.5px] leading-[1.3] text-neutral-500 md:text-[12px]">{s.label}</span>
+              </Stagger.Item>
+            ))}
+          </Stagger>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default About;
